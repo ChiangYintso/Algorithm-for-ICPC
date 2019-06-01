@@ -1,0 +1,5 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.15)
+
+PROJECT(interval_dp)
+
+ADD_EXECUTABLE(leetcode516 leetcode516.c)

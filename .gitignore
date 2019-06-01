@@ -1,2 +1,9 @@
+# ignore the editor's configration file
 *.vscode
+*.idea
+
+# ignore the compile file
 *.exe
+**/build/
+*.class
+*/cmake-build-debug/

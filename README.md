@@ -1,5 +1,3 @@
-# Algorithm-for-ICPC
+# ICPC
 
-Algorithm learing for ICPC.
-
-Encoding: utf-8
+ POJ, lintcode, 洛谷, 牛客, 计蒜客, leetcode, hduoj
