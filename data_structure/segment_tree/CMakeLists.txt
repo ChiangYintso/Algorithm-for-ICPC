@@ -4,3 +4,4 @@ PROJECT(segment_tree)
 set(CMAKE_CXX_STANDARD 20)
 
 ADD_EXECUTABLE(luogu3372 luogu3372.cpp)
+add_executable(hdu1166 hdu1166.cpp)
