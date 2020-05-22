@@ -1,4 +1,4 @@
-# ICPC代码
+# ACM模板代码
 
 Chiang Yin-tso
 
@@ -692,3 +692,37 @@ int main() {
 ```
 
 利用KMP算法中的get_next()可以求字符串最大回文前缀（cf1326D）
+
+## 动态规划
+
+### 动态规划基础
+
+#### 最长递增子序列
+
+```c++
+#include <cstdio>
+#include <algorithm>
+
+const int MAX_N = 200000;
+int arr[MAX_N] = {0};
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    
+    int element, idx = 0;
+    int *index;
+    for (int i = 0; i < n; ++i) {
+        scanf("%d", &element);
+        if ((index = std::lower_bound(arr, arr + idx, element)) == arr + idx) idx++;
+        *index = element;
+    }
+    printf("%d\n", idx);
+    for (int i = 0; i < idx; ++i) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    return 0;
+}
+```
+
