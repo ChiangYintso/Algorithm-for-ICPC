@@ -19,7 +19,7 @@ void init(int n) {
     }
 }
 
-inline int find_parent(int v) {
+int find_parent(int v) {
     return parents[v] == v ? v : parents[v] = find_parent(parents[v]);
 }
 

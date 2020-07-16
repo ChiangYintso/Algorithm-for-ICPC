@@ -399,11 +399,11 @@ void add_edge(int from, int to, long long distance) {
 
 
 long long distance[100005];
-bool visited[100005];
+bool grid[100005];
 
 void dijkstra(int vertex_count) {
 
-    memset(visited, false, sizeof(visited));
+    memset(grid, false, sizeof(grid));
     distance[1] = 0;
     for (int i = 2; i <= vertex_count; ++i) {
         distance[i] = MAX_LONG_LONG;
@@ -417,15 +417,15 @@ void dijkstra(int vertex_count) {
     while (!vertex_queue.empty()) {
         Vertex cur_v = vertex_queue.top();
         vertex_queue.pop();
-        if (visited[cur_v.v]) continue;
+        if (grid[cur_v.v]) continue;
 
         // 搜索到终点结束
         if (cur_v.v == vertex_count) break;
 
-        visited[cur_v.v] = true;
+        grid[cur_v.v] = true;
 
         for (int i = Edge::heads[cur_v.v]; i; i = edges[i].next) {
-            if (!visited[edges[i].to] && distance[edges[i].to] > distance[cur_v.v] + edges[i].distance) {
+            if (!grid[edges[i].to] && distance[edges[i].to] > distance[cur_v.v] + edges[i].distance) {
                 distance[edges[i].to] = distance[cur_v.v] + edges[i].distance;
                 vertex_queue.push({edges[i].to, distance[edges[i].to]});
             }

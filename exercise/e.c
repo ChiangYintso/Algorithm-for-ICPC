@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 const int MAX_N = 200008;
-int a[200008];
+int raw_graph[200008];
 int c[200008];
 int visited[200008] = {0};
 
@@ -16,12 +16,12 @@ void dfs(int cur, int turn) {
     while (1) {
         visited[cur] = turn;
 
-        cur = a[cur];
+        cur = raw_graph[cur];
         if (visited[cur] && visited[cur] != turn) break;
         // find circle
         if (visited[cur]) {
             int min_cost = c[cur];
-            for (int i = a[cur]; i != cur; i = a[i]) {
+            for (int i = raw_graph[cur]; i != cur; i = raw_graph[i]) {
                 min_cost = min_cost < c[i] ? min_cost : c[i];
             }
             total_cost += min_cost;
@@ -32,7 +32,7 @@ void dfs(int cur, int turn) {
 
 void solve() {
     for (int i = 1; i <= n; ++i) {
-        if (!visited[a[i]]) {
+        if (!visited[raw_graph[i]]) {
             if (!visited[i]) {
                 dfs(i, i);
             }
@@ -49,7 +49,7 @@ int main() {
         scanf("%d", &c[i]);
     }
     for (int i = 1; i <= n; ++i) {
-        scanf("%d", &a[i]);
+        scanf("%d", &raw_graph[i]);
     }
     solve();
     return 0;

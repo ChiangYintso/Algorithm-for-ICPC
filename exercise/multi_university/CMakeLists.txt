@@ -1,0 +1,7 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10.2)
+
+PROJECT(multi_university)
+SET(CMAKE_C_STANDARD 11)
+SET(CMAKE_CXX_STANDARD 17)
+
+add_executable(h.cpp h)

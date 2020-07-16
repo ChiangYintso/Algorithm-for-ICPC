@@ -44,9 +44,9 @@ public class Dijkstra {
     private static PriorityQueue<Vertex> queue = new PriorityQueue<>(new VertexComparator());
 
     private static void dijkstra(int n) {
-        boolean[] visited = new boolean[109];
+        boolean[] grid = new boolean[109];
         queue.add(vertices[1]);
-        visited[1] = true;
+        grid[1] = true;
 
         while (!queue.isEmpty()) {
             Vertex peekVertex = queue.peek();
@@ -54,7 +54,7 @@ public class Dijkstra {
             queue.remove();
 
             for (int i = firstEdgeIdOfFromVertices[peekVertex.vertexId]; i != 0; i = edges[i].prevEdge) {
-                if (!visited[edges[i].toVertex] &&
+                if (!grid[edges[i].toVertex] &&
                         edges[i].weight + peekVertex.distance < vertices[edges[i].toVertex].distance) {
                     vertices[edges[i].toVertex].distance = edges[i].weight + peekVertex.distance;
                     queue.add(vertices[edges[i].toVertex]);
