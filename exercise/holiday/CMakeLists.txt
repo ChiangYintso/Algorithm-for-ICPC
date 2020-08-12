@@ -1,0 +1,18 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10.2)
+
+PROJECT(holiday)
+SET(CMAKE_C_STANDARD 11)
+SET(CMAKE_CXX_STANDARD 17)
+
+add_executable(poj1692 poj1692.cpp)
+add_executable(h h.cpp)
+add_executable(b b.cpp)
+add_executable(b2 b2.cpp)
+add_executable(d d.cpp)
+add_executable(a a.cpp)
+add_executable(j j.cpp)
+add_executable(poj1513 poj1513.cpp)
+add_executable(poj1771 poj1771.cpp)
+add_executable(h2 h2.cpp)
+add_executable(gym100971k gym100971k.cpp)
+add_executable(poj1103 poj1103.cpp)

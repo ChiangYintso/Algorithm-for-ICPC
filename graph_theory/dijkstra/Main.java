@@ -41,23 +41,23 @@ public class Dijkstra {
 
     static Vertex[] vertices = new Vertex[109];
 
-    private static PriorityQueue<Vertex> name_queue = new PriorityQueue<>(new VertexComparator());
+    private static PriorityQueue<Vertex> queue = new PriorityQueue<>(new VertexComparator());
 
     private static void dijkstra(int n) {
-        boolean[] visited = new boolean[109];
-        name_queue.add(vertices[1]);
-        visited[1] = true;
+        boolean[] grid = new boolean[109];
+        queue.add(vertices[1]);
+        grid[1] = true;
 
-        while (!name_queue.isEmpty()) {
-            Vertex peekVertex = name_queue.peek();
+        while (!queue.isEmpty()) {
+            Vertex peekVertex = queue.peek();
 //            System.out.println(peekVertex.vertexId);
-            name_queue.remove();
+            queue.remove();
 
             for (int i = firstEdgeIdOfFromVertices[peekVertex.vertexId]; i != 0; i = edges[i].prevEdge) {
-                if (!visited[edges[i].toVertex] &&
+                if (!grid[edges[i].toVertex] &&
                         edges[i].weight + peekVertex.distance < vertices[edges[i].toVertex].distance) {
                     vertices[edges[i].toVertex].distance = edges[i].weight + peekVertex.distance;
-                    name_queue.add(vertices[edges[i].toVertex]);
+                    queue.add(vertices[edges[i].toVertex]);
                 }
             }
         }
@@ -76,7 +76,7 @@ public class Dijkstra {
             firstEdgeIdOfFromVertices[i] = 0;
         }
         vertices[1].distance = 0;
-        name_queue.clear();
+        queue.clear();
         edgeId = 1;
     }
 
