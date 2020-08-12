@@ -6,7 +6,6 @@ SET(CMAKE_CXX_STANDARD 20)
 SET(CMAKE_C_FLAGS -pthread)
 
 add_executable(a1 a1.cpp)
-add_executable(a2 a2.cpp)
 add_executable(j.cpp j.cpp)
 add_executable(test.c test.c)
 add_executable(e.c e.c)

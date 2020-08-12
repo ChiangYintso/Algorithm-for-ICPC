@@ -10,7 +10,7 @@ const long long MAX_LONG_LONG = 9223372036854775807;
 
 struct Edge {
     static int edge_idx;
-    static int heads[100005];
+    static int heads[105];
     int to;
     long long distance;
     int next;
@@ -21,7 +21,7 @@ struct Edge {
 } edges[200005];
 
 int Edge::edge_idx = 0;
-int Edge::heads[100005] = {0};
+int Edge::heads[105] = {0};
 
 struct Vertex {
     int v;
@@ -40,29 +40,27 @@ void add_edge(int from, int to, long long distance) {
 }
 
 
-long long distance[100005];
-bool visited[100005];
+long long distance[105];
+bool visited[105];
 
 void dijkstra(int vertex_count) {
 
-    memset(visited, false, sizeof(visited));
-    distance[1] = 0;
-    for (int i = 2; i <= vertex_count; ++i) {
+    distance[0] = 0;
+
+    for (int i = 1; i <= vertex_count; ++i) {
         distance[i] = MAX_LONG_LONG;
     }
 
     std::priority_queue<Vertex> vertex_queue;
 
-    // 1是起点
-    vertex_queue.push({1, 0});
+    // 0是起点
+    vertex_queue.push({0, 0});
 
     while (!vertex_queue.empty()) {
         Vertex cur_v = vertex_queue.top();
         vertex_queue.pop();
         if (visited[cur_v.v]) continue;
 
-        // 搜索到终点结束
-        if (cur_v.v == vertex_count) break;
 
         visited[cur_v.v] = true;
 
@@ -73,23 +71,40 @@ void dijkstra(int vertex_count) {
             }
         }
     }
-    printf("%lld\n", distance[vertex_count]);
 }
 
 int main() {
-    int vertex_count, road_count;
 
-    int from, to, tmp_dis;
-    while (~scanf("%d %d", &vertex_count, &road_count) && vertex_count && road_count) {
+    int m, n;
+    int item[102], level[103];
+    while (~scanf("%d %d", &m, &n)) {
         Edge::edge_idx = 0;
         memset(Edge::heads, 0, sizeof(Edge::heads));
 
-        for (int i = 0; i < road_count; ++i) {
-            scanf("%d %d %d", &from, &to, &tmp_dis);
-            add_edge(from, to, tmp_dis);
-            add_edge(to, from, tmp_dis);
+        int min_level = 0x7fffffff, max_level = 0;
+        for (int i = 1; i <= n; i++) {
+            int edge_num;
+            scanf("%d %d %d", &item[i], &level[i], &edge_num);
+            add_edge(0, i, item[i]);
+            min_level = std::min(min_level, level[i]);
+            max_level = std::max(max_level, level[i]);
+            while (edge_num--) {
+                int ver, value;
+                scanf("%d %d", &ver, &value);
+                add_edge(ver, i, value);
+            }
         }
-        dijkstra(vertex_count);
+
+        long long answer = item[1];
+        for (int i = min_level; i <= max_level; ++i) {
+            memset(visited, false, sizeof(visited));
+            for (int j = 1; j <= n; j++)
+                if (level[j] > i || i - level[j] > m)
+                    visited[j] = true;
+            dijkstra(n);
+            answer = std::min(answer, distance[1]);
+        }
+        printf("%lld\n", answer);
     }
     return 0;
 }

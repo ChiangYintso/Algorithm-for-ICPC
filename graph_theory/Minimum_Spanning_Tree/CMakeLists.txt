@@ -4,4 +4,5 @@ PROJECT(exercise)
 SET(CMAKE_C_STANDARD 11)
 SET(CMAKE_CXX_STANDARD 17)
 
+add_executable(luogu3366 luogu3366.cpp)
 add_executable(poj2421 poj2421.c)

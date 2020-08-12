@@ -5,7 +5,8 @@ struct Road {
     int v1;
     int v2;
     int order;
-    bool operator<(Road &r) {
+
+    bool operator<(Road &r) const {
         return this->order < r.order;
     }
 };
@@ -40,7 +41,7 @@ void solve(int n, int m) {
         if (count == 1) {
             printf("%d\n", roads[i].order);
             return;
-        }    
+        }
     }
     printf("-1\n");
 }
@@ -49,7 +50,7 @@ int main() {
     // 村庄数，公路数
     int n, m;
     scanf("%d %d", &n, &m);
-    
+
     int v1, v2, order;
     for (int i = 0; i < m; ++i) {
         scanf("%d %d %d", &v1, &v2, &order);

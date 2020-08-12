@@ -4,14 +4,16 @@ Chiang Yin-tso
 
 [TOC]
 
-## C++语法
+## C++
 
 std::cin取消同步
 
-```cpp
+```c++
 std::cin.sync_with_stdio(false);
 std::cin.tie(nullptr);
 ```
+
+
 
 ## 数据结构
 
@@ -135,6 +137,7 @@ int main() {
     }
     return 0;
 }
+
 ```
 
 ```C++
