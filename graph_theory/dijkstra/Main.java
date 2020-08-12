@@ -41,23 +41,23 @@ public class Dijkstra {
 
     static Vertex[] vertices = new Vertex[109];
 
-    private static PriorityQueue<Vertex> queue = new PriorityQueue<>(new VertexComparator());
+    private static PriorityQueue<Vertex> name_queue = new PriorityQueue<>(new VertexComparator());
 
     private static void dijkstra(int n) {
         boolean[] visited = new boolean[109];
-        queue.add(vertices[1]);
+        name_queue.add(vertices[1]);
         visited[1] = true;
 
-        while (!queue.isEmpty()) {
-            Vertex peekVertex = queue.peek();
+        while (!name_queue.isEmpty()) {
+            Vertex peekVertex = name_queue.peek();
 //            System.out.println(peekVertex.vertexId);
-            queue.remove();
+            name_queue.remove();
 
             for (int i = firstEdgeIdOfFromVertices[peekVertex.vertexId]; i != 0; i = edges[i].prevEdge) {
                 if (!visited[edges[i].toVertex] &&
                         edges[i].weight + peekVertex.distance < vertices[edges[i].toVertex].distance) {
                     vertices[edges[i].toVertex].distance = edges[i].weight + peekVertex.distance;
-                    queue.add(vertices[edges[i].toVertex]);
+                    name_queue.add(vertices[edges[i].toVertex]);
                 }
             }
         }
@@ -76,7 +76,7 @@ public class Dijkstra {
             firstEdgeIdOfFromVertices[i] = 0;
         }
         vertices[1].distance = 0;
-        queue.clear();
+        name_queue.clear();
         edgeId = 1;
     }
 

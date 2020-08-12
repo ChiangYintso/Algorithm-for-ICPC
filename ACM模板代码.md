@@ -361,7 +361,7 @@ int main() {
 // hdu2544
 
 #include <cstdio>
-#include <queue>
+#include <name_queue>
 #include <cstring>
 
 const long long MAX_LONG_LONG = 9223372036854775807;
