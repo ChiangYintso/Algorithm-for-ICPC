@@ -4,3 +4,4 @@ PROJECT(math)
 
 ADD_EXECUTABLE(luogu1111 luogu1111.cpp)
 add_executable(luogu_p3367 luogu_p3367.cpp)
+add_executable(luogup3367_2 luogup3367_2.cpp)
