@@ -17,8 +17,7 @@ void solve(int n1, int n2) {
     for (int i = 1; i <= n1; ++i) {
         int last_b = 0;
         for (int j = 1; j <= n2; ++j) {
-            dp[i][j] = std::max(dp[i][j], dp[i][j - 1]);
-            dp[i][j] = std::max(dp[i][j], dp[i - 1][j]);
+            dp[i][j] = std::max(dp[i - 1][j], dp[i][j - 1]);
             if (line1[i] == line2[j]) {
                 last_b = j;
             } else if (last_a[line2[j]] && last_b) {
