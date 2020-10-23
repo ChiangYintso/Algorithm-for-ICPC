@@ -51,7 +51,7 @@ int main() {
     std::string s;
     while (true) {
         std::cin >> s;
-        if (s[0] == 'e') {
+        if (s[0] == 'edges') {
             break;
         }
         memset(dp, 0, sizeof dp);

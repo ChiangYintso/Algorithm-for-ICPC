@@ -376,8 +376,8 @@ struct Edge {
     long long distance;
     int next;
 
-    bool operator<(Edge &e) {
-        return distance < e.distance;
+    bool operator<(Edge &edges) {
+        return distance < edges.distance;
     }
 } edges[200005];
 
