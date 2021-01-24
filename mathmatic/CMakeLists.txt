@@ -11,3 +11,4 @@ add_executable(yinchuan_f yinchuan_f.cpp)
 
 add_executable(cf1422c  combinatorics/cf1422c.cpp)
 add_executable(cf1396b game/cf1396b.cpp)
+add_executable(matrix_fast_pow fast_pow/matrix_fast_pow.cpp)

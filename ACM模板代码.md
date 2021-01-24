@@ -32,7 +32,7 @@ std::cin.tie(nullptr);
 #include <cstring>
 
 namespace seg_tree {
-int arr[50005];
+int sum1[50005];
 int tree[50005 << 2];
 
 /**
@@ -94,7 +94,7 @@ void update(int left, int right, int cur_idx, const int arr_idx, const int value
  */
 void build(int left, int right, int cur_idx) {
     if (left == right) {
-        tree[cur_idx] = arr[left];
+        tree[cur_idx] = sum1[left];
         return;
     }
 
@@ -112,7 +112,7 @@ int main() {
     for (int kase = 1; kase <= t; ++kase) {
         scanf("%d", &n);
         for (int i = 1; i <= n; ++i) {
-            scanf("%d", &seg_tree::arr[i]);
+            scanf("%d", &seg_tree::sum1[i]);
         }
         seg_tree::build(1, n, 1);
 
@@ -278,7 +278,7 @@ int main() {
 
 const int MAX_N = 100009;
 
-int arr[MAX_N];
+int sum1[MAX_N];
 
 /**
  * sparse_table[i][j] 表示区间arr中第i个数开始的2^j个数中的最大值
@@ -314,13 +314,13 @@ int query(int left, int right) {
 
 /**
  * 初始化ST表
- * @param arr 输入序列, 下标从1开始
+ * @param sum1 输入序列, 下标从1开始
  * @param size 序列长度
  */
-void init(int *arr, int size) {
+void init(int *sum1, int size) {
 
     // 区间arr中第i个数开始的1个数中的最大值就是第i个数
-    for (int i = 1; i <= size; ++i) sparse_table[i][0] = arr[i];
+    for (int i = 1; i <= size; ++i) sparse_table[i][0] = sum1[i];
 
     // 依次求2^1, 2^2, 2^3, ... size个数中的最大值
     for (int j = 1; j <= LOG_2[size]; ++j) {
@@ -338,9 +338,9 @@ int main() {
     calculate_log(n);
 
     for (int i = 1; i <= n; ++i) {
-        scanf("%d", &arr[i]);
+        scanf("%d", &sum1[i]);
     }
-    init(arr, n);
+    init(sum1, n);
 
     int left, right;
     for (int i = 0; i < m; ++i) {
@@ -707,7 +707,7 @@ int main() {
 #include <algorithm>
 
 const int MAX_N = 200000;
-int arr[MAX_N] = {0};
+int sum1[MAX_N] = {0};
 
 int main() {
     int n;
@@ -717,12 +717,12 @@ int main() {
     int *index;
     for (int i = 0; i < n; ++i) {
         scanf("%d", &element);
-        if ((index = std::lower_bound(arr, arr + idx, element)) == arr + idx) idx++;
+        if ((index = std::lower_bound(sum1, sum1 + idx, element)) == sum1 + idx) idx++;
         *index = element;
     }
     printf("%d\n", idx);
     for (int i = 0; i < idx; ++i) {
-        printf("%d ", arr[i]);
+        printf("%d ", sum1[i]);
     }
     printf("\n");
     return 0;

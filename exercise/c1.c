@@ -3,7 +3,7 @@
 //
 
 #include <stdio.h>
-
+struct Foo {};
 int arr[1000009];
 
 int main() {
@@ -38,7 +38,8 @@ int main() {
         printf("1 1\n");
     } else if (find_it == 1) {
         if (from <= 0 || arr[n - 1] >= arr[from - 1]) {
-            if (from < 0) from = 0;
+            if (from < 0)
+                from = 0;
             printf("%d %d\n", from + 1, n);
         } else {
             printf("impossible\n");

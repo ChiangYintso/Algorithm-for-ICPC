@@ -4,24 +4,25 @@
 
 #include <cstdio>
 
-char seq[1000009];
+char Seq[1000009];
 
 int main() {
     int n;
     scanf("%d", &n);
-    scanf("%s", seq);
+    scanf("%s", Seq);
     int idx = 0;
     int l_count = 0;
     int r_count = 0;
     int answer = 0;
     for (int i = 0; i < n; ++i) {
-        if (seq[i] == '(') l_count++;
-        else r_count++;
+        if (Seq[i] == '(') l_count++;
+        else
+            r_count++;
     }
     bool valid = true;
     if (l_count == r_count + 2) {
         for (int i = n - 1; i >= 0; --i) {
-            if (seq[i] == ')') {
+            if (Seq[i] == ')') {
                 idx--;
             } else {
                 idx++;
@@ -42,7 +43,7 @@ int main() {
         printf("%d\n", answer);
     } else if (l_count + 2 == r_count) {
         for (int i = 0; i < n; ++i) {
-            if (seq[i] == '(') {
+            if (Seq[i] == '(') {
                 idx--;
             } else {
                 idx++;

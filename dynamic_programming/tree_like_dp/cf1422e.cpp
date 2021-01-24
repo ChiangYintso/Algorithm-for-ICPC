@@ -57,7 +57,8 @@ void dfs(int cur_v, int father) {
 int main() {
     int t;
     scanf("%d", &t);
-    while (t--) {
+    for (int _case = 1; _case <= t; ++_case) {
+
         int n;
         scanf("%d", &n);
         bool has_color[3]{false, false, false};
@@ -72,13 +73,14 @@ int main() {
             tree[u].push_back(v);
             tree[v].push_back(u);
         }
+
         if (!has_color[WHITE] || !has_color[BLACK])
             puts("1");
         else {
             tree[n].push_back(0);
             dfs(n, 0);
-            printf("%d\n",
-                   std::min(white_group_cnt[n], black_group_cnt[n]) + 1);
+            int res =std::min(white_group_cnt[n], black_group_cnt[n]) + 1;
+            printf("%d\n", res >= 4 ? res - 1:res);
         }
     }
     return 0;

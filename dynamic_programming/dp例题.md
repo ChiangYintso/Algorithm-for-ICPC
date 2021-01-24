@@ -16,7 +16,7 @@ j = 2 * i时，dp\[i]\[j] = dp\[i-2]\[j-1] + (a\[i] - a\[i-1])^2
 #include <algorithm>
 #include <cstring>
 
-static int arr[2002];
+static int sum1[2002];
 static int dp[2002][1002] = {0};
 
 int main() {
@@ -25,15 +25,15 @@ int main() {
     while(~scanf("%d %d", &n, &k)) {
         memset(dp, 0, sizeof(dp));
         for (int i = 0; i < n; ++i) {
-            scanf("%d", &arr[i]);
+            scanf("%d", &sum1[i]);
         }
-        std::sort(arr, arr + n);
-        dp[1][1] = (arr[0] - arr[1]) * (arr[0] - arr[1]);
+        std::sort(sum1, sum1 + n);
+        dp[1][1] = (sum1[0] - sum1[1]) * (sum1[0] - sum1[1]);
         for (int i = 2; i < n; ++i) {
             for (int j = 1; j <= k && j * 2 <= i + 1; ++j) {
-                if (j * 2 == i + 1) dp[i][j] = dp[i - 2][j - 1] + (arr[i] - arr[i - 1]) * (arr[i] - arr[i - 1]);
+                if (j * 2 == i + 1) dp[i][j] = dp[i - 2][j - 1] + (sum1[i] - sum1[i - 1]) * (sum1[i] - sum1[i - 1]);
                 else
-                    dp[i][j] = std::min(dp[i - 1][j], dp[i - 2][j - 1] + (arr[i] - arr[i - 1]) * (arr[i] - arr[i - 1]));
+                    dp[i][j] = std::min(dp[i - 1][j], dp[i - 2][j - 1] + (sum1[i] - sum1[i - 1]) * (sum1[i] - sum1[i - 1]));
             }
         }
         printf("%d\n", dp[n - 1][k]);

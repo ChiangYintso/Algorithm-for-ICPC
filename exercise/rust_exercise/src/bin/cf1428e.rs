@@ -14,7 +14,7 @@ fn main() {
     let k = s.next().unwrap().parse::<usize>().unwrap();
     let mut s = String::new();
     std::io::stdin().read_line(&mut s).unwrap();
-    let arr = s
+    let sum1 = s
         .split_whitespace()
         .map(|s| {
             let len = s.parse::<i64>().unwrap();
@@ -22,7 +22,7 @@ fn main() {
         })
         .collect::<Vec<(i64, i64, i64)>>();
 
-    let mut queue = BinaryHeap::from(arr);
+    let mut queue = BinaryHeap::from(sum1);
 
     for _ in 0..k - queue.len() {
         let v = queue.pop().unwrap();

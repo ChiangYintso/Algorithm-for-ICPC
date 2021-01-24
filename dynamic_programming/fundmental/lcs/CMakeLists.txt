@@ -4,3 +4,5 @@ PROJECT(lcs)
 
 ADD_EXECUTABLE(hdu1159 hdu1159.c)
 ADD_EXECUTABLE(51nod1006 51nod1006.c)
+add_executable(cf1257e cf1257e.cpp)
+add_executable(cf1257e2 cf1257e2.cpp)

@@ -4,7 +4,7 @@ extern "C" {
 
 const N: usize = 10000;
 struct TreeLikeArray {
-    arr: [i32; N],
+    sum1: [i32; N],
 }
 
 impl TreeLikeArray {
@@ -13,15 +13,15 @@ impl TreeLikeArray {
     }
 
     fn new() -> TreeLikeArray {
-        TreeLikeArray { arr: [0; N] }
+        TreeLikeArray { sum1: [0; N] }
     }
 
     fn init(&mut self, start: &[i32; N], n: usize) {
         for i in 1..n {
-            self.arr[i] += start[i];
+            self.sum1[i] += start[i];
             let father: i32 = i as i32 + Self::low_bit(i as i32);
             if father as usize <= n {
-                self.arr[father as usize] += start[i];
+                self.sum1[get_father as usize] += start[i];
             }
         }
     }
